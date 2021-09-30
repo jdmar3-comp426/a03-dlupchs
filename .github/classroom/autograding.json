@@ -139,6 +139,166 @@
       "comparison": "exact",
       "timeout": 10,
       "points": 4
+    },
+    {
+      "name": "searchHighPower(car_data, minHorsepower, minTorque) from medium_3",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "searchMpg(car_data, minCity, minHighway) from medium_3",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "searchMpg(car_data, minCity, minHighway) from medium_3",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "searchByYear(car_data, years) from medium_3",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "repeat from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "repeatDemo from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "multiplyBy from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "multiplyBy from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": " tenTimes from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "tenTimesFifty from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "everyEven from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "someEven from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "filter from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "allEvensAreOdd from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "allEvenIsOdd",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "hasExactly from spicy_9",
+      "setup": "",
+      "run": "clear",
+      "input": "",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
     }
   ]
 }
