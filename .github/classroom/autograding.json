@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "sumToString(a,b) from mild_1",
-      "setup": "npm install esm",
+      "setup": "npm install --silent esm",
       "run": "node --experimental-modules --input-type=module --eval \"import {sumToString} from './src/mild/mild_1.js'; console.log(sumToString(13,7));\"",
       "input": "",
       "output": "13 + 7 = 20",
@@ -12,7 +12,7 @@
     },
     {
       "name": "getIncreasingArray(startNumber, endNumber) from milld_1",
-      "setup": "npm install esm",
+      "setup": "npm install --silent esm",
       "run": "node --experimental-modules --input-type=module --eval \"import {getIncreasingArray} from './src/mild/mild_1.js'; console.log(getIncreasingArray(13,22));\"",
       "input": "",
       "output": "[\r\n  13, 14, 15, 16, 17,\r\n  18, 19, 20, 21, 22\r\n]",
@@ -22,7 +22,7 @@
     },
     {
       "name": "maxAndMin(numbers) from mild_1",
-      "setup": "npm install esm",
+      "setup": "npm install --silent esm",
       "run": "node --experimental-modules --input-type=module --eval \"import {maxAndMin} from './src/mild/mild_1.js'; console.log(maxAndMin('41847923'));\"",
       "input": "",
       "output": "{ max: 9, min: 1 }",
@@ -32,8 +32,8 @@
     },
     {
       "name": "countArray(array) from mild_1",
-      "setup": "npm install esm",
-      "run": "echo \"import {countArray} from './src/mild/mild_1.js'; console.log(countArray([ 13, 14, 16, 16, 17, 18, 16, 14, 21, 13 ]));\" | node -r esm --",
+      "setup": "npm install --silent esm",
+      "run": "node --experimental-modules --input-type=module --eval \"import {countArray} from './src/mild/mild_1.js'; console.log(countArray([ 13, 14, 16, 16, 17, 18, 16, 14, 21, 13 ]));\"",
       "input": "",
       "output": "{ '13': 2, '14': 2, '16': 3, '17': 1, '18': 1, '21': 1 }",
       "comparison": "exact",
