@@ -45,7 +45,7 @@ export function maxAndMin(numbers) {
     if (val > max) max = val;
     if (val < min) min = val;
   }
-  return {min, max}
+  return {min: min.toString(), max: max.toString()}
 }
 
 /**

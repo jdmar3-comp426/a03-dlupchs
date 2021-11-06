@@ -68,9 +68,11 @@ export function removeKey(object, key) {
  If only `removeKeyNonDestructive` was called, nothing would have changed.
  */
 export function removeKeyNonDestructive(object, key) {
-   const clonedObj = Object.create(object);
-   delete clonedObj[key];
-   return clonedObj;
+   let deepClone = {};
+   for (const [objKey, value] of Object.entries(object)) {
+      if (objKey !== key) deepClone[objKey] = value
+   }
+   return deepClone;
 }
 
 /**
@@ -95,9 +97,16 @@ export function removeKeyNonDestructive(object, key) {
  * @return {*} The object with its keys removed.
  */
 export function removeKeys(object, keyList) {
-   const clonedObj = Object.create(object);
-   for (let i = 0; i < keyList.length; i++) {
-      delete clonedObj[keyList[i]];
+   let keyDict = keyList.reduce((a,x) => ({...a, [x]: x}), {})
+   let deepClone = {};
+   for (const [objKey, value] of Object.entries(object)) {
+      if (!(objKey in keyDict)) deepClone[objKey] = value
    }
-   return clonedObj;
+   return deepClone;
+}
+let obj = {
+   name: 'Mr. Boss',
+   title: 'boss',
+   age: 33,
+   password: 'pass123'
 }
