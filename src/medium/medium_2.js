@@ -147,12 +147,12 @@ function getIfHybridByYear(rawArray) {
             yearArrays[year][hybridKey].highway.push(highwayMpg);
         } else {
             yearArrays[year] = {};
-            yearArrays[year][hybridKey] = {};
-            yearArrays[year][hybridKey]['city'] = [cityMpg];
-            yearArrays[year][hybridKey]['highway']= [highwayMpg];
             yearArrays[year][oppositeKey] = {};
             yearArrays[year][oppositeKey]['city'] = [];
             yearArrays[year][oppositeKey]['highway']= [];
+            yearArrays[year][hybridKey] = {};
+            yearArrays[year][hybridKey]['city'] = [cityMpg];
+            yearArrays[year][hybridKey]['highway']= [highwayMpg];
         }
     }
     for (const [year, value] of Object.entries(yearArrays)) {
