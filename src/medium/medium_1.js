@@ -27,15 +27,18 @@ export function getSum(array) {
  * console.log(getMedian(array)); // 4.5
  */
 export function getMedian(array) {
-  array.sort();
+  array.sort(function(a,b) { return a-b });
   const n = array.length
   if (n < 1) return 0;
   const even = n % 2 == 0
-  const med = Math.floor((n-1)/2) 
+  const med = Math.floor((n-1)/2)
   if (even) return (array[med] + array[med+1]) / 2;
   return array[med];
 }
 
+
+let array = [1111,11,111];
+console.log(getMedian(array)); // 4.5
 
 /**
  * Calculates statistics (see below) on an array of numbers.
