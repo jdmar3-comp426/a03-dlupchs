@@ -45,9 +45,10 @@ export function maxAndMin(numbers) {
     if (val > max) max = val;
     if (val < min) min = val;
   }
-  return {max: max, min: min}
+  return {max: parseInt(max), min: parseInt(min)}
 }
 
+console.log(maxAndMin([1, 2, 9]))
 /**
  *
  * @param array - An array of any primitive type
