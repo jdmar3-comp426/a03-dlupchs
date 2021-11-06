@@ -25,7 +25,8 @@ function getHybridCount(rawArray) {
     return count;
 }
 
-const mpgArray = getArrays(mpg_data, ['city_mpg', 'highway_mpg']);
+const cityMpgArray = getArrays(mpg_data, ['city_mpg']);
+const highwayMpgArray = getArrays(mpg_data, ['highway_mpg'])
 const yearArray = getArrays(mpg_data, ['year']);
 const hybridCount = getHybridCount(mpg_data);
 
@@ -41,11 +42,12 @@ const hybridCount = getHybridCount(mpg_data);
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: getStatistics(mpgArray).mean,
+    avgMpg: {city: getStatistics(cityMpgArray).mean, highway: getStatistics(highwayMpgArray).mean},
     allYearStats: getStatistics(yearArray),
     ratioHybrids: hybridCount/mpg_data.length,
 };
 
+console.log(allCarStats)
 /**
  * HINT: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
  *
