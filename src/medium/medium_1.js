@@ -37,8 +37,8 @@ export function getMedian(array) {
 }
 
 
-let array = [1111,11,111];
-console.log(getMedian(array)); // 4.5
+// let array = [1111,11,111];
+// console.log(getMedian(array)); // 4.5
 
 /**
  * Calculates statistics (see below) on an array of numbers.
