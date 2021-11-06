@@ -48,7 +48,6 @@ export function maxAndMin(numbers) {
   return {max: parseInt(max), min: parseInt(min)}
 }
 
-console.log(maxAndMin([1, 2, 9]))
 /**
  *
  * @param array - An array of any primitive type

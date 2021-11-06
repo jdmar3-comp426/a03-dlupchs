@@ -36,6 +36,8 @@ export function getMedian(array) {
   return array[med];
 }
 
+console.log(getMedian([3,2,5,6,2,7,4,2,7,5]));
+
 /**
  * Calculates statistics (see below) on an array of numbers.
  * Look at the stats_helper.js file. It does variance which is used to calculate std deviation.
