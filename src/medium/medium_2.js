@@ -156,10 +156,11 @@ function getIfHybridByYear(rawArray) {
         }
     }
     for (const [year, value] of Object.entries(yearArrays)) {
-        yearArrays[year].hybrid.city = getStatistics(yearArrays[year].hybrid.city).mean;
-        yearArrays[year].hybrid.highway = getStatistics(yearArrays[year].hybrid.highway).mean;
         yearArrays[year].nothybrid.city = getStatistics(yearArrays[year].nothybrid.city).mean;
         yearArrays[year].nothybrid.highway = getStatistics(yearArrays[year].nothybrid.highway).mean;
+        yearArrays[year].hybrid.city = getStatistics(yearArrays[year].hybrid.city).mean;
+        yearArrays[year].hybrid.highway = getStatistics(yearArrays[year].hybrid.highway).mean;
+     
     }
     return yearArrays;
 }
