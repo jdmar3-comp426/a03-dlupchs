@@ -45,7 +45,7 @@ export function maxAndMin(numbers) {
     if (val > max) max = val;
     if (val < min) min = val;
   }
-  return {max, min}
+  return {max: max, min: min}
 }
 
 /**
