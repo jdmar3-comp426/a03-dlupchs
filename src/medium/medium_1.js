@@ -32,7 +32,7 @@ export function getMedian(array) {
   if (n < 1) return 0;
   const even = n % 2 == 0
   const med = Math.floor((n-1)/2) 
-  if (even) return array[med] + array[med+1];
+  if (even) return (array[med] + array[med+1]) / 2;
   return array[med];
 }
 
