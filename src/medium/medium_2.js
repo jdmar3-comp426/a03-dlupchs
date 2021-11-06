@@ -165,9 +165,8 @@ function getIfHybridByYear(rawArray) {
 
 const allMakerHybrids = getHybridMakes(mpg_data);
 const avgMpgYearlyType = getIfHybridByYear(mpg_data);
-console.log(avgMpgYearlyType)
 
 export const moreStats = {
     makerHybrids: allMakerHybrids,
-    avgMpgByYearAndHybrid: undefined
+    avgMpgByYearAndHybrid: avgMpgYearlyType
 };
