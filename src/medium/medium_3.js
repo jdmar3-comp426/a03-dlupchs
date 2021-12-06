@@ -17,8 +17,23 @@ queries.
  * sorted by horsepower in descending order.
  *
  */
-export function searchHighPower(car_data, minHorsepower, minTorque) {
 
+
+export function searchHighPower(car_data, minHorsepower, minTorque) {
+  const res = [];
+  for (let i = 0; i < car_data.length; i++) {
+    if (car_data[i].horsepower >= minHorsepower && car_data[i].torque >= minTorque) res.push(car_data[i]);
+  }
+  res.sort((a, b) => {
+    if ( a.horsepower < b.horsepower ){
+        return 1;
+    }
+    if ( a.horsepower > b.horsepower ){
+        return -1;
+    }
+    return 0
+  });
+  return res;
 }
 
 
@@ -33,7 +48,20 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
  *
  */
 export function searchMpg(car_data, minCity, minHighway) {
-
+  const res = [];
+  for (let i = 0; i < car_data.length; i++) {
+    if (car_data[i].highway_mpg >= minHighway && car_data[i].city_mpg >= minCity) res.push(car_data[i]);
+  }
+  res.sort((a, b) => {
+    if ( a.highway_mpg < b.highway_mpg ){
+        return 1;
+    }
+    if ( a.highway_mpg > b.highway_mpg ){
+        return -1;
+    }
+    return 0
+  });
+  return res;
 }
 
 
@@ -46,7 +74,21 @@ export function searchMpg(car_data, minCity, minHighway) {
  * @returns {[]} array of cars
  */
 export function searchName(car_data, searchTerm) {
-
+  const res = [];
+  const searchString = searchTerm.toLowerCase();
+  for (let i = 0; i < car_data.length; i++) {
+    if (car_data[i].id.toLowerCase().includes(searchString)) res.push(car_data[i]);
+  }
+  res.sort((a, b) => {
+    if ( a.id.toLowerCase().indexOf(searchString) < b.id.toLowerCase().indexOf(searchString) ){
+        return -1;
+    }
+    if ( a.id.toLowerCase().indexOf(searchString) > b.id.toLowerCase().indexOf(searchString) ){
+        return 1;
+    }
+    return 0
+  });
+  return res;
 }
 
 
@@ -59,5 +101,10 @@ export function searchName(car_data, searchTerm) {
  * @returns {[]} an array of car objects
  */
 export function searchByYear(car_data, years) {
-
+  const res = [];
+  const yearDict = new Set(years);
+  for (let i = 0; i < car_data.length; i++) {
+    if (yearDict.has(car_data[i].year)) res.push(car_data[i]);
+  }
+  return res;
 }

@@ -7,6 +7,28 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 see under the methods section
 */
 
+function getArrays(rawArray, keys) {
+    const newArray = [];
+    for (let i = 0; i < rawArray.length; i++) {
+        for (let j = 0; j < keys.length; j++) {
+            newArray.push(rawArray[i][keys[j]]);
+        }
+    }
+    return newArray;
+}
+ 
+function getHybridCount(rawArray) {
+    let count = 0;
+    for (let i = 0; i < rawArray.length; i++) {
+        if (rawArray[i].hybrid) count++;
+    }
+    return count;
+}
+
+const cityMpgArray = getArrays(mpg_data, ['city_mpg']);
+const highwayMpgArray = getArrays(mpg_data, ['highway_mpg'])
+const yearArray = getArrays(mpg_data, ['year']);
+const hybridCount = getHybridCount(mpg_data);
 
 /**
  * This object contains data that has to do with every car in the `mpg_data` object.
@@ -20,11 +42,10 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: {city: getStatistics(cityMpgArray).mean, highway: getStatistics(highwayMpgArray).mean},
+    allYearStats: getStatistics(yearArray),
+    ratioHybrids: hybridCount/mpg_data.length,
 };
-
 
 /**
  * HINT: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
@@ -83,7 +104,71 @@ export const allCarStats = {
  *
  * }
  */
+
+function compare(a, b) {
+    if ( a.hybrids.length < b.hybrids.length ){
+        return 1;
+    }
+    if ( a.hybrids.length > b.hybrids.length ){
+        return -1;
+    }
+    return 0;
+}
+
+function getHybridMakes(rawArray) {
+    const makerHybridDict = {};
+    for (let i = 0; i < rawArray.length; i++) {
+        if (rawArray[i].hybrid) {
+            if (rawArray[i].make in makerHybridDict) {
+                makerHybridDict[rawArray[i].make].push(rawArray[i].id);
+            } else {
+                makerHybridDict[rawArray[i].make] = [rawArray[i].id];
+            }
+        }
+    }
+    const res = []
+    for (const [key, value] of Object.entries(makerHybridDict)) {
+        res.push({make: key, hybrids: value});
+    }
+    res.sort(compare)
+    return res;
+}
+
+function getIfHybridByYear(rawArray) {
+    const yearArrays = {};
+    for (let i = 0; i < rawArray.length; i++) {
+        const hybridKey = (rawArray[i].hybrid) ? "hybrid" : "nothybrid";
+        const oppositeKey = (!rawArray[i].hybrid) ? "hybrid" : "nothybrid";
+        const year = rawArray[i].year;
+        const cityMpg = rawArray[i].city_mpg;
+        const highwayMpg = rawArray[i].highway_mpg;
+        if (year in yearArrays && hybridKey in yearArrays[year]) {
+            yearArrays[year][hybridKey].city.push(cityMpg);
+            yearArrays[year][hybridKey].highway.push(highwayMpg);
+        } else {
+            yearArrays[year] = {};
+            yearArrays[year][oppositeKey] = {};
+            yearArrays[year][oppositeKey]['city'] = [];
+            yearArrays[year][oppositeKey]['highway']= [];
+            yearArrays[year][hybridKey] = {};
+            yearArrays[year][hybridKey]['city'] = [cityMpg];
+            yearArrays[year][hybridKey]['highway']= [highwayMpg];
+        }
+    }
+    for (const [year, value] of Object.entries(yearArrays)) {
+        yearArrays[year].nothybrid.city = getStatistics(yearArrays[year].nothybrid.city).mean;
+        yearArrays[year].nothybrid.highway = getStatistics(yearArrays[year].nothybrid.highway).mean;
+        yearArrays[year].hybrid.city = getStatistics(yearArrays[year].hybrid.city).mean;
+        yearArrays[year].hybrid.highway = getStatistics(yearArrays[year].hybrid.highway).mean;
+     
+    }
+    return yearArrays;
+}
+
+const allMakerHybrids = getHybridMakes(mpg_data);
+const avgMpgYearlyType = getIfHybridByYear(mpg_data);
+
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: allMakerHybrids,
+    avgMpgByYearAndHybrid: avgMpgYearlyType
 };
